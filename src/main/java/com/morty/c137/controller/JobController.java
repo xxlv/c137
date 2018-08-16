@@ -15,6 +15,6 @@ public class JobController {
     @GetMapping
     public String index()
     {
-        return "";
+        return "Hello world";
     }
 }

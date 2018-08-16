@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	 http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<bean
+		id="dataSource"
+		class="com.alibaba.druid.pool.DruidDataSource"
+		destroy-method="close">
+		<property
+			name="driverClassName"
+			value="${jdbc.driver}" />
+		<property
+			name="url"
+			value="${jdbc.url}" />
+		<property
+			name="username"
+			value="${jdbc.username}" />
+		<property
+			name="password"
+			value="${jdbc.password}" />
+		<!-- Connection Pooling Info -->
+		<property
+			name="filters"
+			value="stat" />
+		<property
+			name="maxActive"
+			value="${jdbc.pool.maxActive}" />
+		<property
+			name="initialSize"
+			value="1" />
+		<property
+			name="maxWait"
+			value="${jdbc.pool.maxWait}" />
+		<property
+			name="minIdle"
+			value="${jdbc.pool.minIdle}" />
+		<property
+			name="timeBetweenEvictionRunsMillis"
+			value="${jdbc.pool.timeBetweenEvictionRunsMillis}" />
+		<property
+			name="minEvictableIdleTimeMillis"
+			value="${jdbc.pool.minEvictableIdleTimeMillis}" />
+		<property
+			name="validationQuery"
+			value="SELECT 'x'" />
+		<property
+			name="testWhileIdle"
+			value="true" />
+		<property
+			name="testOnBorrow"
+			value="false" />
+		<property
+			name="testOnReturn"
+			value="false" />
+		<property
+			name="maxPoolPreparedStatementPerConnectionSize"
+			value="${jdbc.pool.maxPoolPreparedStatementPerConnectionSize}" />
+		<!--监控信息输出到日志的时间 -->
+		<property
+			name="timeBetweenLogStatsMillis"
+			value="0" />
+		<!-- 解决emoji表情数据库中字符乱码问题 -->
+		<property
+			name="connectionInitSqls"
+			value="set names utf8mb4;" />
+		<!-- 合并多个DruidDataSource的监控数据 -->
+		<property
+			name="useGloalDataSourceStat"
+			value="true" />
+		<!-- 超过时间限制是否回收 -->
+		<property
+			name="removeAbandoned"
+			value="true" />
+		<!-- 超时时间；单位为秒。180秒=3分钟 -->
+		<property
+			name="removeAbandonedTimeout"
+			value="90" />
+		<!-- 关闭abanded连接时输出错误日志 -->
+		<property
+			name="logAbandoned"
+			value="true" />
+	</bean>
+	<!-- MyBatis 配置 -->
+	<bean
+		id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property
+			name="dataSource"
+			ref="dataSource" />
+		<property
+			name="typeAliasesPackage"
+			value="com.ydl.intf.po" />
+		<property
+			name="configLocation"
+			value="classpath:mybatis/mybatis-config.xml" />
+		<property
+			name="mapperLocations"
+			value="classpath:sqlmap/*.xml" />
+		<property name="plugins">
+			<array>
+
+			</array>
+		</property>
+	</bean>
+
+	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property
+			name="basePackage"
+			value="com.ydl.user.service.dao" />
+		<!-- <property name="markerInterface" value="tk.mybatis.mapper.common.Mapper"/> -->
+		<property
+			name="sqlSessionFactoryBeanName"
+			value="sqlSessionFactory" />
+	</bean>
+
+	<!-- 对数据源进行事务管理 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="dataSource" />
+	<!-- 事务注解的支持 并提供代理机制 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+</beans>
