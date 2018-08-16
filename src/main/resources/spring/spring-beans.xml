@@ -35,4 +35,36 @@
         </property>
         <property name="fileEncoding" value="utf-8"/>
     </bean>
+
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property
+                name="basePackage"
+                value="com.morty.c137.dao"/>
+        <property
+                name="sqlSessionFactoryBeanName"
+                value="sqlSessionFactory"/>
+    </bean>
+
+    <bean
+            id="sqlSessionFactory"
+            class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property
+                name="dataSource"
+                ref="dataSource"/>
+        <property
+                name="typeAliasesPackage"
+                value="com.ydl.intf.po"/>
+        <property
+                name="configLocation"
+                value="classpath:mybatis/mybatis-config.xml"/>
+        <property
+                name="mapperLocations"
+                value="classpath:sqlmap/*.xml"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                </bean>
+            </array>
+        </property>
+    </bean>
 </beans>
