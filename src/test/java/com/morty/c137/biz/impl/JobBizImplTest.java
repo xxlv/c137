@@ -8,7 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @ContextConfiguration(locations = {"classpath:spring-context.xml"})
 public class JobBizImplTest extends AbstractTestNGSpringContextTests {
@@ -29,7 +28,5 @@ public class JobBizImplTest extends AbstractTestNGSpringContextTests {
         }else{
             Assert.assertEquals(theJob.getId().longValue(),1L);
         }
-
-
     }
 }

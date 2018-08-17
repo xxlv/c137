@@ -3,7 +3,8 @@
 <suite name="jobtest">
     <test verbose="1" name="smoke">
         <packages>
-            <package name="com.morty.c137"/>
+            <!--执行mvn test 执行扫描的单测包 如果没有*会找不到 不知道为啥-->
+            <package name="com.morty.c137.*"/>
         </packages>
     </test>
 </suite>
