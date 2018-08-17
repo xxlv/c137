@@ -120,9 +120,9 @@
 			value="sqlSessionFactory" />
 	</bean>
 
-	<!-- 对数据源进行事务管理 -->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="dataSource" />
-	<!-- 事务注解的支持 并提供代理机制 -->
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!--&lt;!&ndash; 对数据源进行事务管理 &ndash;&gt;-->
+	<!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" p:dataSource-ref="dataSource" />-->
+	<!--&lt;!&ndash; 事务注解的支持 并提供代理机制 &ndash;&gt;-->
+	<!--<tx:annotation-driven transaction-manager="transactionManager" />-->
 
 </beans>

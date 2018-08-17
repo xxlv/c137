@@ -19,8 +19,17 @@ public class JobBizImplTest extends AbstractTestNGSpringContextTests {
     @Test
     public void testSaveJob() {
 
-        List<Job> jobs=jobMapper.selectAll();
-        System.out.println(jobs.size());
-        Assert.assertTrue(true);
+        Long id=1L;
+        Job job=new Job();
+        Job theJob=jobMapper.selectByPrimaryKey(id);
+        if(theJob==null){
+            job.setId(1L);
+            int refNu=jobMapper.insertSelective(job);
+            Assert.assertEquals(refNu,1);
+        }else{
+            Assert.assertEquals(theJob.getId().longValue(),1L);
+        }
+
+
     }
 }
