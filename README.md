@@ -4,3 +4,13 @@
 wubba lubba dub dub
 
 A parallel universe created by someone.
+
+##### Build script 
+
+```shell
+
+mvn clean install 
+
+mvn flyway:migrate 
+
+```
