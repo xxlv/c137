@@ -1,7 +1,6 @@
 package com.morty.c137.biz.impl;
 
 import com.morty.c137.dao.JobMapper;
-import com.morty.c137.po.Job;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
