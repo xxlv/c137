@@ -232,6 +232,26 @@
                     <compilerArgument>-parameters</compilerArgument>
                 </configuration>
             </plugin>
+
+            <!--Flyway Like Laravel artisan (OR Ruby on Rails's ) db migrate -->
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.1.4</version>
+                <configuration>
+                    <url>${morty.jdbc.url}</url>
+                    <user>root</user>
+                    <password>tt12345</password>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <scope>runtime</scope>
+                        <version>5.1.25</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
 	</build>
 
