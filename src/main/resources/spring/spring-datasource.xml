@@ -88,10 +88,7 @@
 			name="logAbandoned"
 			value="true" />
 	</bean>
-
-
 	<!-- MyBatis 配置 -->
-
 	<bean
 		id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -100,7 +97,7 @@
 			ref="dataSource" />
 		<property
 			name="typeAliasesPackage"
-			value="com.ydl.intf.po" />
+			value="com.morty.c137.po" />
 		<property
 			name="configLocation"
 			value="classpath:mybatis/mybatis-config.xml" />
@@ -108,12 +105,10 @@
 			name="mapperLocations"
 			value="classpath:sqlmap/*.xml" />
 	</bean>
-
 	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property
 			name="basePackage"
-			value="com.ydl.user.service.dao" />
-		<!-- <property name="markerInterface" value="tk.mybatis.mapper.common.Mapper"/> -->
+			value="com.morty.c137.dao" />
 		<property
 			name="sqlSessionFactoryBeanName"
 			value="sqlSessionFactory" />
