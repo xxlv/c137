@@ -17,14 +17,13 @@ public class JobController {
     private JobBiz jobBiz;
 
     @GetMapping
-    public String index()
-    {
-        Job job=new Job();
+    public String index() {
+        Job job = new Job();
         job.setName("name");
         job.setDesc("desc");
         job.setUpdateTime(new Date());
         job.setCreateTime(new Date());
         jobBiz.saveJob(job);
-        return "create new job "+job.getId();
+        return "create new job " + job.getId();
     }
 }
