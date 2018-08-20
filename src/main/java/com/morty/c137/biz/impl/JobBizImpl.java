@@ -16,9 +16,9 @@ public class JobBizImpl implements JobBiz {
     @Override
     public Boolean saveJob(Job job) {
 
-        if(job==null){
+        if (job == null) {
             return false;
         }
-        return jobMapper.insertSelective(job)>0;
+        return jobMapper.insertSelective(job) > 0;
     }
 }
