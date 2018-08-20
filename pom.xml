@@ -79,9 +79,7 @@
         </profile>
     </profiles>
 
-
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -183,7 +181,19 @@
             <version>4.3.11.RELEASE</version>
         </dependency>
     </dependencies>
+
 	<build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <configuration>
+                        <encoding>utf-8</encoding>
+                        <useDefaultDelimiters>true</useDefaultDelimiters>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <finalName>${project.artifactId}-${project.version}</finalName>
         <resources>
             <resource>
@@ -224,7 +234,6 @@
                         <artifactId>mysql-connector-java</artifactId>
                         <version>${mysql.version}</version>
                     </dependency>
-
                 </dependencies>
             </plugin>
             <plugin>
@@ -271,8 +280,8 @@
                 <version>5.1.4</version>
                 <configuration>
                     <url>${morty.jdbc.url}</url>
-                    <user>root</user>
-                    <password>tt12345</password>
+                    <user>${morty.jdbc.username}</user>
+                    <password>${morty.jdbc.password}}</password>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -286,5 +295,7 @@
 
         </plugins>
 	</build>
+
+
 
 </project>
