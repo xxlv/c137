@@ -10,6 +10,7 @@
 	<packaging>jar</packaging>
 	<name>c137</name>
 	<description>c137</description>
+    <!--指定parent包 这个project继承自spring-boot-starter-parent-->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -21,6 +22,10 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
+
+    <!--定义profiles profile相当于各种环境 mvn启动的时候可以通过 mvn test -Plocal 来指定（默认是local 所以不需要指定）
+    可以将一些依赖环境的变量放在这里 比如数据库配置（测试环境和生产不同）等。
+    -->
     <profiles>
         <profile>
             <id>local</id>
@@ -216,17 +221,24 @@
                 <filtering>true</filtering>
             </testResource>
         </testResources>
+        <!--插件组 方便配置一些插件 增加开发效率 在idea中插件将被注册为按钮，直接点击即可执行相应插件-->
 		<plugins>
             <plugin>
+                <!--mybatis 自动生成po插件 -->
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.5</version>
                 <configuration>
+                    <!--mybatis生成po的时候依赖的配置文件
+                    其中${basedir}是mvn支持的变量，会返回pom.xml所在的目录
+                    -->
                     <configurationFile>${basedir}/src/main/resources/mybatis/generatorConfig.xml</configurationFile>
+                    <!--如果有po文件存在 是否覆盖 默认否-->
                     <overwrite>false</overwrite>
                     <verbose>true</verbose>
                 </configuration>
                 <dependencies>
+                    <!--这个插件的依赖项-->
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
@@ -235,6 +247,7 @@
                 </dependencies>
             </plugin>
             <plugin>
+                <!--testng 插件 点击直接运行单测-->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
@@ -245,6 +258,9 @@
                 <version>2.4</version>
             </plugin>
             <plugin>
+                <!--The Resources Plugin handles the copying of project resources to the output directory.
+                似乎只是copy了一下目录而已
+                -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
