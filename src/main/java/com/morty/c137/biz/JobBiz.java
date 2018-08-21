@@ -6,4 +6,6 @@ import org.springframework.stereotype.Service;
 public interface JobBiz {
 
     public Boolean saveJob(Job job);
+
+    public Boolean deleteJob(int id);
 }

@@ -13,12 +13,26 @@ public class JobBizImpl implements JobBiz {
     @Resource
     private JobMapper jobMapper;
 
+    /**
+     * save a job
+     * @param job
+     * @return
+     */
     @Override
     public Boolean saveJob(Job job) {
-
         if (job == null) {
             return false;
         }
         return jobMapper.insertSelective(job) > 0;
+    }
+
+    /**
+     * delete a job
+     * @param id
+     * @return
+     */
+    @Override
+    public Boolean deleteJob(int id) {
+        return jobMapper.deleteByPrimaryKey(1) > 0;
     }
 }

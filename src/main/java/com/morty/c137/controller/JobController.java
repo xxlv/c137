@@ -3,6 +3,7 @@ package com.morty.c137.controller;
 import com.morty.c137.biz.JobBiz;
 import com.morty.c137.po.Job;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,5 +26,11 @@ public class JobController {
         job.setCreateTime(new Date());
         jobBiz.saveJob(job);
         return "create new job " + job.getId();
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable("id") int id) {
+        jobBiz.deleteJob(id);
+        return "deleted job " + id;
     }
 }
