@@ -46,9 +46,6 @@ public class JobBizImplTest extends AbstractTestNGSpringContextTests {
     public void testGetJob() {
     }
 
-    @Test
-    public void testSaveJob1() {
-    }
 
     @Test
     public void testUpdateJob() {

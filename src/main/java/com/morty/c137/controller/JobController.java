@@ -17,6 +17,8 @@ public class JobController {
     @Resource
     private JobBiz jobBiz;
 
+
+
     @GetMapping
     public PageInfo index() {
         // TODO params load from GET
@@ -25,6 +27,11 @@ public class JobController {
         queryJobReqDto.setId(id);
         //分页后的数据
         return jobBiz.listJobPaging(queryJobReqDto);
+    }
+
+    @RequestMapping(value ="/job/{id}",method = RequestMethod.GET)
+    public Job getById(@PathVariable("id") Integer id){
+        return jobBiz.getJob(id);
     }
 
     @GetMapping("/add")
