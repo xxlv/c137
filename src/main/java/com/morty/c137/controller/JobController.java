@@ -18,42 +18,39 @@ public class JobController {
     private JobBiz jobBiz;
 
     @GetMapping
-    public String index() {
-        // TODO load from GET
+    public PageInfo index() {
+        // TODO params load from GET
         int id = 1;
         QueryJobReqDto queryJobReqDto = new QueryJobReqDto();
         queryJobReqDto.setId(id);
         //分页后的数据
-        PageInfo<Job> jobs = jobBiz.listJobPaging(queryJobReqDto);
-        // TODO job 列表
-        return "to do";
+        return jobBiz.listJobPaging(queryJobReqDto);
     }
 
     @GetMapping("/add")
-    public String add() {
+    public Job add() {
         Job job = new Job();
         job.setName("name");
         job.setDesc("desc");
         job.setUpdateTime(new Date());
         job.setCreateTime(new Date());
         jobBiz.saveJob(job);
-        return "create new job " + job.getId();
+        return job;
     }
 
-    @GetMapping("/update")
-    public String update(@RequestParam("id") Integer id, @RequestParam("name") String name,
+    @PostMapping("/update")
+    public Job update(@RequestParam("id") Integer id, @RequestParam("name") String name,
                          @RequestParam("desc") String desc) {
         Job job = jobBiz.getJob(id);
         job.setName(name);
         job.setDesc(desc);
         job.setUpdateTime(new Date());
         jobBiz.updateJob(job);
-        return "updated job " + job.getId();
+        return job;
     }
 
-    @RequestMapping("/delete/{id}")
-    public String delete(@PathVariable("id") int id) {
-        jobBiz.deleteJob(id);
-        return "deleted job " + id;
+    @DeleteMapping("/delete/{id}")
+    public Boolean delete(@PathVariable("id") int id) {
+        return jobBiz.deleteJob(id);
     }
 }
