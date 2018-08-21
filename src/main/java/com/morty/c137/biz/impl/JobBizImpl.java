@@ -14,6 +14,15 @@ public class JobBizImpl implements JobBiz {
     private JobMapper jobMapper;
 
     /**
+     * get a job
+     * @param id
+     * @return
+     */
+    @Override
+    public Job getJob(int id) {
+        return jobMapper.selectByPrimaryKey(id);
+    }
+    /**
      * save a job
      * @param job
      * @return
@@ -24,6 +33,16 @@ public class JobBizImpl implements JobBiz {
             return false;
         }
         return jobMapper.insertSelective(job) > 0;
+    }
+
+    /**
+     * update a job
+     * @param job
+     * @return
+     */
+    @Override
+    public Boolean updateJob(Job job) {
+        return jobMapper.updateByPrimaryKey(job) > 0;
     }
 
     /**
