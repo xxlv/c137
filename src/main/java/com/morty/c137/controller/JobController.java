@@ -1,11 +1,14 @@
 package com.morty.c137.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.morty.c137.biz.JobBiz;
+import com.morty.c137.dto.request.QueryJobReqDto;
 import com.morty.c137.po.Job;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/jobs")
@@ -16,6 +19,12 @@ public class JobController {
 
     @GetMapping
     public String index() {
+        // TODO load from GET
+        int id = 1;
+        QueryJobReqDto queryJobReqDto = new QueryJobReqDto();
+        queryJobReqDto.setId(id);
+        //分页后的数据
+        PageInfo<Job> jobs = jobBiz.listJobPaging(queryJobReqDto);
         // TODO job 列表
         return "to do";
     }
