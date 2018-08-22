@@ -1,4 +1,6 @@
 language: java
+before_script:
+  - mysql -u root -e 'CREATE DATABASE job;'
 install:
   - mvn flyway:migrate
   - mvn install
