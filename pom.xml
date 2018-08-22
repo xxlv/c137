@@ -32,7 +32,7 @@
             <properties>
                 <!-- db -->
                 <morty.jdbc.driver>com.mysql.jdbc.Driver</morty.jdbc.driver>
-                <morty.jdbc.url>jdbc:mysql://localhost:3306/job?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=UTF-8</morty.jdbc.url>
+                <morty.jdbc.url>jdbc:mysql://127.0.0.1:3306/job?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=UTF-8</morty.jdbc.url>
                 <morty.jdbc.username>root</morty.jdbc.username>
                 <morty.jdbc.password>${env.DB_PASS}</morty.jdbc.password>
                 <logger.level>DEBUG</logger.level>
@@ -60,7 +60,7 @@
             <properties>
                 <!-- db -->
                 <morty.jdbc.driver>com.mysql.jdbc.Driver</morty.jdbc.driver>
-                <morty.jdbc.url>jdbc:mysql://localhost:3306/job?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=UTF-8</morty.jdbc.url>
+                <morty.jdbc.url>jdbc:mysql://127.0.0.1:3306/job?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=UTF-8</morty.jdbc.url>
                 <morty.jdbc.username>root</morty.jdbc.username>
                 <morty.jdbc.password>${env.DB_PASS}</morty.jdbc.password>
                 <logger.level>DEBUG</logger.level>
