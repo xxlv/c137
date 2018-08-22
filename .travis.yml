@@ -5,8 +5,7 @@ install:
   - mvn install -Dmaven.test.skip=true
 script:
   - mvn flyway:migrate
-  - jdk_switcher use oraclejdk8
-  - mvn test
+  - mvn test -Ptravis
 services:
   - mysql
 env:
