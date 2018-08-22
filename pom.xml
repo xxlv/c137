@@ -295,7 +295,7 @@
                 <configuration>
                     <url>${morty.jdbc.url}</url>
                     <user>${morty.jdbc.username}</user>
-                    <password>${morty.jdbc.password}}</password>
+                    <password>${morty.jdbc.password}</password>
                 </configuration>
                 <dependencies>
                     <dependency>
