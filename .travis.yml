@@ -2,6 +2,7 @@ language: java
 install:
   - mvn install
 script:
+  - mvn flyway:migrate
   - jdk_switcher use oraclejdk8
   - mvn test
   - jdk_switcher use openjdk8

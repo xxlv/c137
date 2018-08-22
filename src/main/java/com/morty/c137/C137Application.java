@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@EnableScheduling
+//@EnableScheduling
 @ImportResource({"classpath:spring-context.xml"})
 public class C137Application {
 
