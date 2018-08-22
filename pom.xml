@@ -62,7 +62,7 @@
                 <morty.jdbc.driver>com.mysql.jdbc.Driver</morty.jdbc.driver>
                 <morty.jdbc.url>jdbc:mysql://localhost:3306/job?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=UTF-8</morty.jdbc.url>
                 <morty.jdbc.username>root</morty.jdbc.username>
-                <morty.jdbc.password>tt12345</morty.jdbc.password>
+                <morty.jdbc.password>${env.DB_PASS}</morty.jdbc.password>
                 <logger.level>DEBUG</logger.level>
                 <logger.file>logs</logger.file>
                 <logger.env>dev</logger.env>
@@ -90,7 +90,7 @@
                 <morty.jdbc.driver>com.mysql.jdbc.Driver</morty.jdbc.driver>
                 <morty.jdbc.url>jdbc:mysql://127.0.0.1:3306/job?zeroDateTimeBehavior=convertToNull&amp;characterEncoding=UTF-8</morty.jdbc.url>
                 <morty.jdbc.username>root</morty.jdbc.username>
-                <morty.jdbc.password>tt12345</morty.jdbc.password>
+                <morty.jdbc.password></morty.jdbc.password>
                 <logger.level>DEBUG</logger.level>
                 <logger.file>logs</logger.file>
                 <logger.env>travis</logger.env>
