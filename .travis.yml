@@ -2,12 +2,10 @@ language: java
 before_script:
   - mysql -u root -e 'CREATE DATABASE job;'
 install:
-  - mvn flyway:migrate
-  - mvn install
+  - mvn install -DskipTests
 script:
+  - mvn flyway:migrate
   - jdk_switcher use oraclejdk8
-  - mvn test
-  - jdk_switcher use openjdk8
   - mvn test
 services:
   - mysql
