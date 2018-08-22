@@ -7,4 +7,6 @@ script:
   - mvn test
   - jdk_switcher use openjdk8
   - mvn test
+services:
+  - mysql
 
