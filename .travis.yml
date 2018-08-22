@@ -9,4 +9,5 @@ script:
   - mvn test
 services:
   - mysql
-
+env:
+  - DB_PASS=""
