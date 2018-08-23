@@ -53,7 +53,7 @@
                 ref="dataSource"/>
         <property
                 name="typeAliasesPackage"
-                value="com.ydl.intf.po"/>
+                value="com.morty.c137.po"/>
         <property
                 name="configLocation"
                 value="classpath:mybatis/mybatis-config.xml"/>
